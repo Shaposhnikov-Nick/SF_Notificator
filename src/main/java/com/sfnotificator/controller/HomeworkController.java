@@ -1,7 +1,6 @@
 package com.sfnotificator.controller;
 
 import com.sfnotificator.entity.Homework;
-import com.sfnotificator.exceptionHandling.NoSuchHomeworkException;
 import com.sfnotificator.service.HomeworkService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,12 +42,6 @@ public class HomeworkController {
         List<Homework> homework = service.getHomeworkByStudentName(studentName);
         return new ResponseEntity<>(homework, HttpStatus.OK);
     }
-
-//    @GetMapping("/homework/unchecked/{student_name}")
-//    public ResponseEntity<List<Homework>> getHomeworkByStudentNameAndCheckedIsFalse(@PathVariable(name = "student_name") String studentName) {
-//        List<Homework> homework = service.getHomeworkByStudentNameAndCheckedIsFalse(studentName);
-//        return new ResponseEntity<>(homework, HttpStatus.OK);
-//    }
 
     @PostMapping("/homework")
     @ApiOperation(value = "save new homework")

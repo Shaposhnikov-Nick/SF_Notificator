@@ -20,9 +20,6 @@ public class HomeworkServiceImpl implements HomeworkService {
         this.repository = repository;
     }
 
-    /**
-     * @return
-     */
     @Override
     public List<Homework> getAllHomework() {
         return repository.findAll();
@@ -37,22 +34,11 @@ public class HomeworkServiceImpl implements HomeworkService {
     @Override
     public List<Homework> getHomeworkByStudentName(String studentName) {
         List<Homework> homework = repository.findAllByStudentName(studentName);
-        if (homework == null)
+        if (homework.isEmpty())
             throw new NoSuchHomeworkException("Homework of a student named " + studentName
                     + " is absent");
-
         return homework;
     }
-
-//    @Override
-//    public List<Homework> getHomeworkByStudentNameAndCheckedIsFalse(String studentName) {
-//        List<Homework> notCheckedHomework = repository.findAllByStudentNameAndCheckedIsFalse(studentName);
-//        if (notCheckedHomework == null)
-//            throw new NoSuchHomeworkException("Student named " + studentName
-//            + " has no unchecked homework");
-//
-//        return notCheckedHomework;
-//    }
 
     @Override
     public void saveHomework(Homework homework) {

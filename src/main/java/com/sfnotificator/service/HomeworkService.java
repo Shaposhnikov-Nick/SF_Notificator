@@ -11,8 +11,6 @@ public interface HomeworkService {
 
     List<Homework> getHomeworkByStudentName(String studentName);
 
-//    List<Homework> getHomeworkByStudentNameAndCheckedIsFalse(String studentName);
-
     void saveHomework(Homework homework);
 
     String deleteHomework(Long id);
