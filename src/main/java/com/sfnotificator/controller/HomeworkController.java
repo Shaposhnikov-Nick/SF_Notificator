@@ -29,7 +29,6 @@ public class HomeworkController {
     @GetMapping("/homework/{id}")
     public ResponseEntity<Homework> getHomeworkById(@PathVariable Long id) {
         Homework homework = service.getHomeworkById(id);
-
         return new ResponseEntity<>(homework, HttpStatus.OK);
     }
 
@@ -58,7 +57,7 @@ public class HomeworkController {
     }
 
     @DeleteMapping("/homework/{id}")
-    public String deleteHomework(@PathVariable Long id) {
-        return service.deleteHomework(id);
+    public ResponseEntity<String> deleteHomework(@PathVariable Long id) {
+        return new ResponseEntity<>(service.deleteHomework(id), HttpStatus.OK);
     }
 }

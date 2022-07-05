@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HomeworkServiceImpl implements HomeworkService {
@@ -31,7 +32,6 @@ public class HomeworkServiceImpl implements HomeworkService {
     public Homework getHomeworkById(Long id) {
         return repository.findById(id).orElseThrow(() -> new NoSuchHomeworkException("Homework with id=" + id
                 + " is absent"));
-
     }
 
     @Override
@@ -61,6 +61,8 @@ public class HomeworkServiceImpl implements HomeworkService {
 
     @Override
     public String deleteHomework(Long id) {
+        repository.findById(id).orElseThrow(() -> new NoSuchHomeworkException("Homework " +
+                "with id=" + id + " is absent"));
         repository.deleteById(id);
         return "Homework with id=" + id + " was deleted";
     }
